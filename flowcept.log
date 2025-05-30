@@ -1,0 +1,53 @@
+[2025-05-28 16:26:09,428][flowcept][ERROR][DESKTOP-A5MJ8BS.][pid=7368][thread=140473067925632][function=task_query][Invalid document {'find': 'tasks', 'filter': {'workflow_id': <qa_chain.QAChain object at 0x7fc22ab63320>}, 'projection': {'_id': 0, 'timestamp': 0}, 'lsid': {'id': Binary(b'\xbc\x08\x9f\x86\x84\xb0M\xf8\x95\xb3j^2\xa7\xa7\xe9', 4)}, '$db': 'flowcept'} | cannot encode object: <qa_chain.QAChain object at 0x7fc22ab63320>, of type: <class 'qa_chain.QAChain'>]
+Traceback (most recent call last):
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/flowcept/commons/daos/docdb_dao/mongodb_dao.py", line 781, in task_query
+    return [{**r, "status": Status.FINISHED.value} if "finished" in r else r for r in rs]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/cursor.py", line 1284, in __next__
+    return self.next()
+           ^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/cursor.py", line 1260, in next
+    if len(self._data) or self._refresh():
+                          ^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/cursor.py", line 1208, in _refresh
+    self._send_message(q)
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/cursor.py", line 1102, in _send_message
+    response = client._run_operation(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 1917, in _run_operation
+    return self._retryable_read(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2026, in _retryable_read
+    return self._retry_internal(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 1993, in _retry_internal
+    ).run()
+      ^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2730, in run
+    return self._read() if self._is_read else self._write()
+           ^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2891, in _read
+    return self._func(self._session, self._server, conn, read_pref)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 1908, in _cmd
+    return server.run_operation(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/synchronous/server.py", line 170, in run_operation
+    message = operation.get_message(read_preference, conn, use_cmd)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/message.py", line 1697, in get_message
+    request_id, msg, size, _ = _op_msg(
+                               ^^^^^^^^
+  File "/home/tpoteet/venv/lib/python3.12/site-packages/pymongo/message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bson.errors.InvalidDocument: Invalid document {'find': 'tasks', 'filter': {'workflow_id': <qa_chain.QAChain object at 0x7fc22ab63320>}, 'projection': {'_id': 0, 'timestamp': 0}, 'lsid': {'id': Binary(b'\xbc\x08\x9f\x86\x84\xb0M\xf8\x95\xb3j^2\xa7\xa7\xe9', 4)}, '$db': 'flowcept'} | cannot encode object: <qa_chain.QAChain object at 0x7fc22ab63320>, of type: <class 'qa_chain.QAChain'>

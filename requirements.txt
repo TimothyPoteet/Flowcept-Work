@@ -1,0 +1,2 @@
+sentence-transformers
+install -U langchain-community
