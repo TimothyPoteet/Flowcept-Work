@@ -24,12 +24,12 @@ class Workflow:
         
         @flowcept_task
         def E_TO_D(e_value):
-            return e_value ** 2 - 1  # Fixed: ** instead of ^^
+            return e_value ** 2 - 1  
         
         @flowcept_task
         def F_TO_C(f_value):
             import math
-            return math.log(f_value) + 7  # Fixed: f_value instead of e_value
+            return math.log(f_value) + 7  
         
         @flowcept_task
         def G_TO_B(g_value):
@@ -39,33 +39,33 @@ class Workflow:
         def DCB_TO_A(d_value, c_value, b_value):
             return (d_value + c_value + b_value) / 3
         
-        with Flowcept(workflow_name='hierarchical_math_workflow'):  # Fixed indentation
-            # INPUT
+        with Flowcept(workflow_name='hierarchical_math_workflow'): 
+    # INPUT
             I = 12
             print(f"Input I = {I}")
             
-            # FIRST STAGE
-            H = I_TO_H(I)  # Fixed: function name match
+    # FIRST STAGE
+            H = I_TO_H(I)  
             print(f"I → H: {I} → {H}")
             
-            # SECOND STAGE | PARALLEL BRANCHING
-            E = H_TO_E(H)  # Fixed: function name match
-            F = H_TO_F(H)  # Fixed: function name match
-            G = H_TO_G(H)  # Fixed: function name match
+    # SECOND STAGE | PARALLEL BRANCHING
+            E = H_TO_E(H)  
+            F = H_TO_F(H)  
+            G = H_TO_G(H)  
             print(f"H → E: {H} → {E}")
             print(f"H → F: {H} → {F}")
             print(f"H → G: {H} → {G}")
             
-            # THIRD STAGE | TRANSFORMATIONS
-            D = E_TO_D(E)  # Fixed: function name match
-            C = F_TO_C(F)  # Fixed: function name match
-            B = G_TO_B(G)  # Fixed: function name match
+        # THIRD STAGE | TRANSFORMATIONS
+            D = E_TO_D(E)  
+            C = F_TO_C(F)  
+            B = G_TO_B(G)  
             print(f"E → D: {E} → {D}")
             print(f"F → C: {F} → {C}")
             print(f"G → B: {G} → {B}")
             
-            # FOURTH STAGE | AVERAGES
-            A = DCB_TO_A(D, C, B)  # Fixed: function name match
+        # FOURTH STAGE | AVERAGES
+            A = DCB_TO_A(D, C, B)  
             print(f"D,C,B → A: ({D}, {C}, {B}) → {A}")
             
             print(f"\nFinal Result: I({I}) → A({A:.4f})")
