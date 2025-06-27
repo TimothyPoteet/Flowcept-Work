@@ -1,0 +1,248 @@
+{
+  "scale_shift_input": {
+    "in": [
+      {
+        "n": "used.arg_0",
+        "d": "int",
+        "v": [
+          12
+        ]
+      }
+    ],
+    "out": [
+      {
+        "n": "generated.arg_0",
+        "d": "int",
+        "v": [
+          43
+        ]
+      }
+    ],
+    "tel": [
+      {
+        "n": "telemetry_summary.duration_sec",
+        "d": "float",
+        "v": [
+          0.0
+        ]
+      }
+    ]
+  },
+  "square_and_quarter": {
+    "in": [
+      {
+        "n": "used.arg_0",
+        "d": "int",
+        "v": [
+          43
+        ]
+      }
+    ],
+    "out": [
+      {
+        "n": "generated.arg_0",
+        "d": "float",
+        "v": [
+          462.25
+        ]
+      }
+    ],
+    "tel": [
+      {
+        "n": "telemetry_summary.duration_sec",
+        "d": "float",
+        "v": [
+          0.0
+        ]
+      }
+    ]
+  },
+  "sqrt_and_scale": {
+    "in": [
+      {
+        "n": "used.arg_0",
+        "d": "int",
+        "v": [
+          43
+        ]
+      }
+    ],
+    "out": [
+      {
+        "n": "generated.arg_0",
+        "d": "float",
+        "v": [
+          39.34
+        ]
+      }
+    ],
+    "tel": [
+      {
+        "n": "telemetry_summary.duration_sec",
+        "d": "float",
+        "v": [
+          0.0
+        ]
+      }
+    ]
+  },
+  "subtract_and_shift": {
+    "in": [
+      {
+        "n": "used.arg_0",
+        "d": "int",
+        "v": [
+          43
+        ]
+      }
+    ],
+    "out": [
+      {
+        "n": "generated.arg_0",
+        "d": "float",
+        "v": [
+          46.8
+        ]
+      }
+    ],
+    "tel": [
+      {
+        "n": "telemetry_summary.duration_sec",
+        "d": "float",
+        "v": [
+          0.0
+        ]
+      }
+    ]
+  },
+  "square_and_subtract_one": {
+    "in": [
+      {
+        "n": "used.arg_0",
+        "d": "float",
+        "v": [
+          462.25
+        ]
+      }
+    ],
+    "out": [
+      {
+        "n": "generated.arg_0",
+        "d": "float",
+        "v": [
+          213674.06
+        ]
+      }
+    ],
+    "tel": [
+      {
+        "n": "telemetry_summary.duration_sec",
+        "d": "float",
+        "v": [
+          0.0
+        ]
+      }
+    ]
+  },
+  "log_and_shift": {
+    "in": [
+      {
+        "n": "used.arg_0",
+        "d": "float",
+        "v": [
+          39.34
+        ]
+      }
+    ],
+    "out": [
+      {
+        "n": "generated.arg_0",
+        "d": "float",
+        "v": [
+          10.67
+        ]
+      }
+    ],
+    "tel": [
+      {
+        "n": "telemetry_summary.duration_sec",
+        "d": "float",
+        "v": [
+          0.0
+        ]
+      }
+    ]
+  },
+  "power_one_point_five": {
+    "in": [
+      {
+        "n": "used.arg_0",
+        "d": "float",
+        "v": [
+          46.8
+        ]
+      }
+    ],
+    "out": [
+      {
+        "n": "generated.arg_0",
+        "d": "float",
+        "v": [
+          320.16
+        ]
+      }
+    ],
+    "tel": [
+      {
+        "n": "telemetry_summary.duration_sec",
+        "d": "float",
+        "v": [
+          0.0
+        ]
+      }
+    ]
+  },
+  "average_results": {
+    "in": [
+      {
+        "n": "used.arg_0",
+        "d": "float",
+        "v": [
+          213674.06
+        ]
+      },
+      {
+        "n": "used.arg_1",
+        "d": "float",
+        "v": [
+          10.67
+        ]
+      },
+      {
+        "n": "used.arg_2",
+        "d": "float",
+        "v": [
+          320.16
+        ]
+      }
+    ],
+    "out": [
+      {
+        "n": "generated.arg_0",
+        "d": "float",
+        "v": [
+          71334.97
+        ]
+      }
+    ],
+    "tel": [
+      {
+        "n": "telemetry_summary.duration_sec",
+        "d": "float",
+        "v": [
+          0.0
+        ]
+      }
+    ]
+  }
+}

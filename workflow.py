@@ -1,3 +1,6 @@
+from flowcept.agents.agent_client import run_tool
+
+
 class Workflow:
     @staticmethod
     def run():
@@ -27,7 +30,7 @@ class Workflow:
         @flowcept_task
         def average_results(d_value, c_value, b_value):
             return (d_value + c_value + b_value) / 3
-        with Flowcept(workflow_name='hierarchical_math_workflow'):
+        with Flowcept(workflow_name='hierarchical_math_workflow', start_persistence=False, save_workflow=False):
             I = 12; print(f"Input I = {I}")
             H = scale_shift_input(I); print(f"I → H: {I} → {H}")
             E, F, G = square_and_quarter(H), sqrt_and_scale(H), subtract_and_shift(H); print(f"H → E: {H} → {E}"); print(f"H → F: {H} → {F}"); print(f"H → G: {H} → {G}")
@@ -36,3 +39,14 @@ class Workflow:
             print(f"\nFinal Result: I({I}) → A({A:.4f})")
             print(f"Workflow_id={Flowcept.current_workflow_id}")
             return Flowcept.current_workflow_id
+
+try:
+    print(run_tool("check_liveness"))
+except Exception as e:
+    print(e)
+    pass
+
+for i in range(90):
+    print(i)
+    Workflow.run()
+    print(f"Finished {i}")
