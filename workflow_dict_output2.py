@@ -102,8 +102,20 @@ if __name__ == "__main__":
         print(e)
         pass
 
+    try:
+        print(run_tool("prompt_handler", kwargs={"message": "reset context"}))
+    except Exception as e:
+        print(e)
+        pass
+
     # Run the workflow 100 / 1 time(s)
     for i in range(100):
         print(f"Run {i}")
         Workflow.run()
         print(f"Finished {i}")
+
+    try:
+        print(run_tool("prompt_handler", kwargs={"message": "save current df"}))
+    except Exception as e:
+        print(e)
+        pass
