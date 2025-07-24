@@ -2,7 +2,6 @@ import os, json, re, time
 import pandas as pd
 from datetime import datetime
 
-from flowcept.agents import build_llm_model
 from flowcept.agents.agent_client import run_tool
 from langchain_community.llms.sambanova import SambaStudio
 from transformers import AutoTokenizer
@@ -516,12 +515,49 @@ with open(schema_path, 'r') as f:
 
 with open(value_examples_path, 'r') as f:
     example_values = json.dumps(json.load(f), indent=2)
+
+
+def build_judge_llm(model_kwargs=None, service_provider=None):
+    """
+    Build and return an LLM instance using agent configuration.
+
+    This function retrieves the model name and keyword arguments from the AGENT configuration,
+    constructs a SambaStudio LLM instance, and returns it.
+
+    Returns
+    -------
+    LLM
+        An initialized LLM object configured using the `AGENT` settings.
+    """
+    if service_provider == "sambanova":
+        from langchain_community.llms.sambanova import SambaStudio
+        assert os.environ.get("SAMBASTUDIO_URL", None) is not None
+        assert os.environ.get("SAMBASTUDIO_API_KEY", None) is not None
+        llm = SambaStudio(model_kwargs=model_kwargs)
+    elif service_provider == "azure":
+        from langchain_openai.chat_models.azure import AzureChatOpenAI
+        api_key = os.environ.get("AZURE_OPENAI_API_KEY", None)
+        service_url = os.environ.get("AZURE_OPENAI_API_ENDPOINT", None)
+        llm = AzureChatOpenAI(
+            azure_deployment=model_kwargs.get("model"),
+            azure_endpoint=service_url,
+
+            api_key=api_key,
+            **model_kwargs
+        )
+    elif service_provider == "openai":
+        from langchain_openai import ChatOpenAI
+        api_key = os.environ.get("OPENAI_API_KEY", None)
+        llm = ChatOpenAI(openai_api_key=api_key, **model_kwargs)
+
+    return llm
 def get_llm_model():
     model_kwargs = {
         "model": "gpt-4",
-        "temperature":  0.00
+        "temperature":  0.00,
+        "api_version": "2023-05-15"
     }
-    llm = build_llm_model(model_kwargs, service_provider="azure", track_tools=False)
+    llm = build_judge_llm(model_kwargs=model_kwargs, service_provider="azure")
     return llm
 
 llm = get_llm_model()
